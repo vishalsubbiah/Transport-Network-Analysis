@@ -1,0 +1,9 @@
+Terminals: 26
+Bus Stops: 157
+Signals: 54
+
+In given range,
+expected signals:42
+signals found:42
+expected bus stops:126
+bus stops found:136

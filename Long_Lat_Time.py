@@ -6,7 +6,7 @@ from os.path import isfile, join
 import matplotlib.pyplot as plt
 
 def add_headers(filename):
-    fieldnames=['longitude','latitude','Time_Start','Time_Stop','TimeTaken']
+    fieldnames=['latitude','longitude','Time_Start','Time_Stop','TimeTaken']
     with open(filename,'a') as csvfile:
         writer = csv.DictWriter(csvfile,fieldnames=fieldnames)
         writer.writeheader()
@@ -18,7 +18,7 @@ def filenames(mypath):
 def timestamp():
     for i in range(1,8):
         #can modify to get a single day or as many days as required
-        mypath='G:/dream/Programming/Projects/On Git/Transport Network Analysis/Data/Day'+str(i)+'/Buses/'
+        mypath='Data/Day'+str(i)+'/Buses/'
         files=filenames(mypath)
         #files=['40205020800.csv']
         for bus_id in files:
@@ -40,7 +40,7 @@ def timestamp():
                         del latitude[i]
                         del seconds[i]
     
-                time_stamp_path=mypath+'timestamps/BusStops/Terminals_test.csv'
+                time_stamp_path=mypath+'timestamps/BusStops/Terminals.csv'
                 f=open(time_stamp_path,'a')
                 f.close()
                 if(os.path.getsize(time_stamp_path)==0):
@@ -48,8 +48,8 @@ def timestamp():
                     add_headers(time_stamp_path)
 
                 f=open(time_stamp_path,'a+')
-                f.writelines(str(longitude[1])+','+str(latitude[1])+','+str(seconds[1])+','+str(seconds[2])+','+'\n')
-                f.writelines(str(longitude[len(longitude)-2])+','+str(latitude[len(latitude)-2])+','+str(seconds[len(latitude)-2])+','+str(seconds[len(latitude)-1])+','+'\n')
+                f.writelines(str(latitude[1])+','+str(longitude[1])+','+str(seconds[1])+','+str(seconds[2])+','+'\n')
+                f.writelines(str(latitude[len(longitude)-2])+','+str(longitude[len(latitude)-2])+','+str(seconds[len(latitude)-2])+','+str(seconds[len(latitude)-1])+','+'\n')
                 f.close()
                 time_start=seconds[1]
                 for i in range(1,len(longitude)-1):
@@ -62,27 +62,27 @@ def timestamp():
                             print 'bus has stopped'
                             if(time_stop-time_start<=30):
                                 print "Bus Stop"
-                                time_stamp_path=mypath+'timestamps/BusStops/nodes_test.csv'
+                                time_stamp_path=mypath+'timestamps/BusStops/nodes.csv'
                                 f=open(time_stamp_path,'a')
                                 f.close()
                                 if(os.path.getsize(time_stamp_path)==0):
                                     print "Empty File"
                                     add_headers(time_stamp_path)
                                 f=open(time_stamp_path,'a')   
-                                f.writelines(str(longitude[i-1])+','+str(latitude[i-1])+','+str(time_start)+','+str(time_stop)+','+str(time_stop-time_start)+'\n')
+                                f.writelines(str(latitude[i-1])+','+str(longitude[i-1])+','+str(time_start)+','+str(time_stop)+','+str(time_stop-time_start)+'\n')
                                 f.close()
                             #add to file with headers
 
                             if(time_stop-time_start>30):
                                 print 'signal'
-                                time_stamp_path=mypath+'timestamps/Signals/nodes_test.csv'
+                                time_stamp_path=mypath+'timestamps/Signals/nodes.csv'
                                 f=open(time_stamp_path,'a')
                                 f.close()
                                 if(os.path.getsize(time_stamp_path)==0):
                                     print "Empty File"
                                     add_headers(time_stamp_path)
                                 f=open(time_stamp_path,'a')   
-                                f.writelines(str(longitude[i-1])+','+str(latitude[i-1])+','+str(time_start)+','+str(time_stop)+','+str(time_stop-time_start)+'\n')
+                                f.writelines(str(latitude[i-1])+','+str(longitude[i-1])+','+str(time_start)+','+str(time_stop)+','+str(time_stop-time_start)+'\n')
                                 f.close()
                             #add to file with headers              
                         time_start=seconds[i]

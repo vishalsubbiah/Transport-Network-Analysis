@@ -11,7 +11,7 @@ def filenames(mypath):
 def plot_all():
     for i in range(1,8):
         #can modify to get a single day or as many days as required
-        mypath='G:/dream/Programming/Projects/On Git/Transport Network Analysis/Data/Day'+str(i)+'/Buses/'
+        mypath='Data/Day'+str(i)+'/Buses/'
         files=filenames(mypath)
         for bus_id in files:
             #can modify to specific buses
