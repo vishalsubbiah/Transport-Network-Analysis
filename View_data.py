@@ -20,7 +20,7 @@ def filenames(mypath):
     return onlyfiles
 
 def add_headers(filename):
-    fieldnames=['No','day','month','latitude','longitude','bus_id','seconds','No']
+    fieldnames=['No','day','month','longitude','latitude','bus_id','seconds','No']
     with open(filename,'a') as csvfile:
         writer = csv.DictWriter(csvfile,fieldnames=fieldnames)
         writer.writeheader()

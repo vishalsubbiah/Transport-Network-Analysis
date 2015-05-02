@@ -10,9 +10,11 @@ def filenames(mypath):
     return onlyfiles
 def plot_all():
     for i in range(1,8):
+        #can modify to get a single day or as many days as required
         mypath='G:/dream/Programming/Projects/On Git/Transport Network Analysis/Data/Day'+str(i)+'/Buses/'
         files=filenames(mypath)
         for bus_id in files:
+            #can modify to specific buses
         
             df=pd.read_csv(mypath+bus_id)
             longitude=df['longitude']
@@ -25,10 +27,10 @@ def plot_all():
                 if(latitude[i]==0.0):
                     del latitude[i]
                     
-            plt.plot(latitude,longitude)
+            plt.plot(longitude,latitude)
     plt.title('Mapping based on all the buses for one week')
-    plt.xlabel('latitude')
-    plt.ylabel('longitude')
+    plt.xlabel('longitude')
+    plt.ylabel('latitude')
     plt.show()
     
         
