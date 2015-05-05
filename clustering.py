@@ -24,7 +24,7 @@ def getNearestPoint(set_of_points, point_of_reference):
 def final_diff():
     counta=[]
     countb=[]
-    for i in range(7,8):
+    for i in range(1,2):
         #can modify for specific No. of days
         mypath_Terminals='Data/Day'+str(i)+'/Buses/timestamps/BusStops/Terminals.csv'    
         df_terminals=pd.read_csv(mypath_Terminals)
